@@ -9,7 +9,7 @@ Player is able to guess the right name in a given time.
 ## How Player looses:
 Player is not able to guess right name in a given time.
 
-##pseudocode:
+## pseudocode:
 
 * Make an array of names.
 
