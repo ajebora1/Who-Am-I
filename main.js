@@ -1,11 +1,11 @@
 /*----- constants -----*/
-const LENGTH_OF_WORD = 6
-const names = ['peter', 'simon', 'david']
-const MAX_GUESSES = 2
-const LETTERS_ALLOWED = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+const MAX_GUESSED_WORDS = 5
+const PROVIDED_NAMES = ['peter', 'simon', 'david']
+// const MAX_GUESSES = 2
+const WORDS_ALLOWED = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 /*----- app's state (variables) -----*/
-let guessedName, playerGuessName, currentGuess, numberOfGuesses, message
+let guessedName, playerGuessName, currentGuess, message, gameName
 
 
 /*----- cached element references -----*/
@@ -20,13 +20,14 @@ keyBoard.addEventListener('click', keyboardClick)
 function initGame() {
     playerGuessName = []
     guessedName = []
-    numberOfGuesses = 0
     currentGuess = ''
+    gameName = getRandomName()
+    getProvidedName(gameName)
 }
 
 function getRandomName() {
-    const randomInt = Math.floor(Math.random() * names.length)
-    return names[randomInt]
+    const randomInt = Math.floor(Math.random() * PROVIDED_NAMES.length)
+    return PROVIDED_NAMES[randomInt]
 }
 
 function getProvidedName(name) {
@@ -41,12 +42,8 @@ function getProvidedName(name) {
     })
 }
 
-let gameName = getRandomName()
-getProvidedName(gameName)
-
-
 function keyboardClick(evt) {
-    if (LETTERS_ALLOWED.includes(evt.target.innerText.toLowerCase())) {
+    if (WORDS_ALLOWED.includes(evt.target.innerText.toLowerCase())) {
         updateCurrentGuess(evt.target.innerText)
         render()
     } else if (evt.target.innerText === "Restart") {
@@ -62,7 +59,7 @@ function keyboardClick(evt) {
 }
 
 function updateCurrentGuess(letter) {
-    if (currentGuess.length < LENGTH_OF_WORD) {
+    if (currentGuess.length < MAX_GUESSED_WORDS) {
         currentGuess += letter
         playerGuessName.push(letter)
     }
@@ -71,15 +68,12 @@ function updateCurrentGuess(letter) {
 function handleSubmit() {
     let tempPlayerGuessName = playerGuessName.join('').toLowerCase();
     if (tempPlayerGuessName === gameName) {
-        document.getElementById("message").innerHTML = "Great Job in winning the Game! Way to go!";
+        document.getElementById("message").innerHTML = "Great Job Winning The Game! Way To Go! Click Restart to Play Another Game";
+        resetGameBoard()
     } else if (tempPlayerGuessName !== gameName) {
-        document.getElementById("message").innerHTML = "Try Again! You got this!";
-
+        document.getElementById("message").innerHTML = "Try Again! You got this! Click Restart to Play Another Game";
+        resetGameBoard()
     }
-}
-
-function handleDelete() {
-    playerGuessName = playerGuessName.slice(0, playerGuessName.length - 1)
 }
 
 function render() {
@@ -92,10 +86,28 @@ function render() {
         cell.classList.add('cell')
         guessNameBoard.children[idx].appendChild(cell)
     })
-    console.log(playerGuessName)
 }
 
+function modifiedNames() {
+    let tempPlayerGuessName = playerGuessName.join('').toLowerCase();
+}
 
+function handleRestart() {
+    initGame()
+    // resetGameBoard()
+    document.getElementById("message").innerHTML = ''
+    gameName = getRandomName()
+    getProvidedName(gameName)
+}
+
+function resetGameBoard() {
+    currentGuess = ''
+    playerGuessName = []
+}
+
+function handleDelete() {
+    playerGuessName = playerGuessName.slice(0, playerGuessName.length - 1)
+}
 
 // Initializing Game
 initGame()

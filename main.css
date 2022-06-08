@@ -1,10 +1,3 @@
-/* body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 150vh;
-    /* background: #00BCD4; */
-/* } */
 span {
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -119,7 +112,7 @@ div[class*='line'] span:active {
 
 .line4 span:nth-child(2) {
     width: 105px;
- }
+}
 
 /* .line4 span:nth-child(3) {
     width: 135px;
@@ -160,4 +153,3 @@ h1 {
     font-size: 32px;
     font-family: sans-serif;
 }
-
