@@ -16,6 +16,8 @@ https://lucid.app/lucidchart/2ebf2f27-75ef-484b-8b22-7750bb89c23f/edit?invitatio
 
 ## Getting Started
 
+Play Who-Am-I game @ https://ajebora1.github.io/Who-Am-I/
+
 ##  How Player wins: 
 
 * Player is presented with a rearranged name.
