@@ -1,6 +1,6 @@
 /*----- constants -----*/
 const MAX_GUESSED_WORDS = 5
-const PROVIDED_NAMES = ['dalton', 'danny', 'erict', 'ibraheam', 'jacob', 'jason', 'kammi', 'kiefer', 'lihue', 'michael', 'mingl', 'nathan' ,'obyli', 'rusen', 'rachel', 'ryano','trayt', 'victor']
+const PROVIDED_NAMES = ['danny', 'erict', 'jacob', 'jason', 'kammi', 'lihue', 'mingl', 'obyli', 'rusen', 'ryano','trayt']
 // const MAX_GUESSES = 2
 const WORDS_ALLOWED = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
@@ -111,6 +111,7 @@ function resetGameBoard() {
 function handleDelete() {
     playerGuessName = playerGuessName.slice(0, playerGuessName.length - 1)
 }
+
 
 // Initializing Game
 initGame()
