@@ -1,6 +1,6 @@
 /*----- constants -----*/
 const MAX_GUESSED_WORDS = 5
-const PROVIDED_NAMES = ['danny', 'erict', 'jacob', 'jason', 'kammi', 'lihue', 'mingl', 'obyli', 'rusen', 'ryano','trayt']
+const PROVIDED_NAMES = ['danny', 'erict', 'jacob', 'jason', 'kammi', 'lihue', 'mingl', 'obyli', 'rusen', 'ryano', 'trayt']
 // const MAX_GUESSES = 2
 const WORDS_ALLOWED = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
@@ -17,6 +17,8 @@ keyBoard.addEventListener('click', keyboardClick)
 
 /*----- functions -----*/
 
+/*----- Initialize The Game -----*/
+
 function initGame() {
     playerGuessName = []
     guessedName = []
@@ -25,11 +27,13 @@ function initGame() {
     getProvidedName(gameName)
 }
 
+/*----- Get a random name from the poll of names -----*/
 function getRandomName() {
     const randomInt = Math.floor(Math.random() * PROVIDED_NAMES.length)
     return PROVIDED_NAMES[randomInt]
 }
 
+/*----- Modified the random name by moving characters around -----*/
 function getProvidedName(name) {
     const sliceFirstLastCharacter = name.slice(1, -1);
     const getFirstCharacter = name.charAt(0);
@@ -42,6 +46,7 @@ function getProvidedName(name) {
     })
 }
 
+/*----- Event listeners  -----*/
 function keyboardClick(evt) {
     if (WORDS_ALLOWED.includes(evt.target.innerText.toLowerCase())) {
         updateCurrentGuess(evt.target.innerText)
@@ -58,6 +63,7 @@ function keyboardClick(evt) {
     }
 }
 
+/*----- Update current guesses -----*/
 function updateCurrentGuess(letter) {
     if (currentGuess.length < MAX_GUESSED_WORDS) {
         currentGuess += letter
@@ -65,6 +71,7 @@ function updateCurrentGuess(letter) {
     }
 }
 
+/*----- Winning and lossing Game definition -----*/
 function handleSubmit() {
     let tempPlayerGuessName = playerGuessName.join('').toLowerCase();
     if (tempPlayerGuessName === gameName) {
@@ -78,6 +85,7 @@ function handleSubmit() {
     }
 }
 
+/*----- Render -----*/
 function render() {
     for (let i = 0; i < guessNameBoard.children.length; i++) {
         guessNameBoard.children[i].innerHTML = ''
@@ -90,10 +98,7 @@ function render() {
     })
 }
 
-function modifiedNames() {
-    let tempPlayerGuessName = playerGuessName.join('').toLowerCase();
-}
-
+/*----- Restarting The Game -----*/
 function handleRestart() {
     initGame()
     // resetGameBoard()
@@ -103,11 +108,13 @@ function handleRestart() {
     getProvidedName(gameName)
 }
 
+/*----- Clear Game Board -----*/
 function resetGameBoard() {
     currentGuess = ''
     playerGuessName = []
 }
 
+/*----- Delete Characters From Game Board -----*/
 function handleDelete() {
     playerGuessName = playerGuessName.slice(0, playerGuessName.length - 1)
 }

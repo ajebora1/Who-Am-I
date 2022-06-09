@@ -119,15 +119,6 @@ div[class*='line'] span:active {
     width: 105px;
 }
 
-/* .line4 span:nth-child(3) {
-    width: 135px;
-    padding: 10px 15px;
-} */
-
-/* .line4 span:nth-child(4) {
-    width: 400px
-} */
-
 .line4 span:last-of-type {
     width: 105px
 }
