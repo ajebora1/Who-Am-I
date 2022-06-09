@@ -1,6 +1,6 @@
 # Who-Am-I 
 
-![who-am-I](https://github.com/ajebora1/Who-Am-I.git/main/who-am-i.png)
+![who-am-i](https://github.com/ajebora1/Who-Am-I.git/main/who-am-i.png)
 
 Who-Am-I is a game of Names where you are provided with a rearranged character for a name to guess what the right name is.
 
