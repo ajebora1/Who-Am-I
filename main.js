@@ -1,19 +1,17 @@
 /*----- constants -----*/
 const MAX_GUESSED_WORDS = 5
 const PROVIDED_NAMES = ['danny', 'erict', 'jacob', 'jason', 'kammi', 'lihue', 'mingl', 'obyli', 'rusen', 'ryano', 'trayt']
-// const MAX_GUESSES = 2
 const WORDS_ALLOWED = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 /*----- app's state (variables) -----*/
 let guessedName, playerGuessName, currentGuess, message, gameName
 
-
 /*----- cached element references -----*/
-const keyBoard = document.getElementById('baseid')
-const guessNameBoard = document.getElementById('board')
+const keyBoardEl = document.getElementById('baseid')
+const guessNameBoardEl = document.getElementById('board')
 
 /*----- event listeners -----*/
-keyBoard.addEventListener('click', keyboardClick)
+keyBoardEl.addEventListener('click', keyboardClick)
 
 /*----- functions -----*/
 
@@ -75,10 +73,14 @@ function updateCurrentGuess(letter) {
 function handleSubmit() {
     let tempPlayerGuessName = playerGuessName.join('').toLowerCase();
     if (tempPlayerGuessName === gameName) {
+        document.getElementById("message").classList.add('animate__animated', 'animate__wobble');
+        document.getElementById("messageRestart").classList.add('animate__animated', 'animate__wobble');
         document.getElementById("message").innerHTML = "Great Job! You Did it!"
         document.getElementById("messageRestart").innerHTML = "Click Restart to Play Again";
         resetGameBoard()
     } else if (tempPlayerGuessName !== gameName) {
+        document.getElementById("message").classList.add('animate__animated', 'animate__wobble');
+        document.getElementById("messageRestart").classList.add('animate__animated', 'animate__wobble');
         document.getElementById("message").innerHTML = "Nice Try! You got this!"
         document.getElementById("messageRestart").innerHTML = "Click Restart To Try Again";
         resetGameBoard()
@@ -87,14 +89,14 @@ function handleSubmit() {
 
 /*----- Render -----*/
 function render() {
-    for (let i = 0; i < guessNameBoard.children.length; i++) {
-        guessNameBoard.children[i].innerHTML = ''
+    for (let i = 0; i < guessNameBoardEl.children.length; i++) {
+        guessNameBoardEl.children[i].innerHTML = ''
     }
     playerGuessName.forEach(function (letter, idx) {
         const cell = document.createElement('span')
         cell.innerText = letter
         cell.classList.add('cell')
-        guessNameBoard.children[idx].appendChild(cell)
+        guessNameBoardEl.children[idx].appendChild(cell)
     })
 }
 
@@ -120,5 +122,5 @@ function handleDelete() {
 }
 
 
-// Initializing Game
+/*----- Initializing Game -----*/
 initGame()
