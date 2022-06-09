@@ -1,6 +1,6 @@
 /*----- constants -----*/
 const MAX_GUESSED_WORDS = 5
-const PROVIDED_NAMES = ['peter', 'simon', 'david']
+const PROVIDED_NAMES = ['dalton', 'danny', 'erict', 'ibraheam', 'jacob', 'jason', 'kammi', 'kiefer', 'lihue', 'michael', 'mingl', 'nathan' ,'obyli', 'rusen', 'rachel', 'ryano','trayt', 'victor']
 // const MAX_GUESSES = 2
 const WORDS_ALLOWED = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
@@ -68,10 +68,12 @@ function updateCurrentGuess(letter) {
 function handleSubmit() {
     let tempPlayerGuessName = playerGuessName.join('').toLowerCase();
     if (tempPlayerGuessName === gameName) {
-        document.getElementById("message").innerHTML = "Great Job Winning The Game! Way To Go! Click Restart to Play Another Game";
+        document.getElementById("message").innerHTML = "Great Job! You Did it!"
+        document.getElementById("messageRestart").innerHTML = "Click Restart to Play Again";
         resetGameBoard()
     } else if (tempPlayerGuessName !== gameName) {
-        document.getElementById("message").innerHTML = "Try Again! You got this! Click Restart to Play Another Game";
+        document.getElementById("message").innerHTML = "Nice Try! You got this!"
+        document.getElementById("messageRestart").innerHTML = "Click Restart To Try Again";
         resetGameBoard()
     }
 }
@@ -96,6 +98,7 @@ function handleRestart() {
     initGame()
     // resetGameBoard()
     document.getElementById("message").innerHTML = ''
+    document.getElementById("messageRestart").innerHTML = ''
     gameName = getRandomName()
     getProvidedName(gameName)
 }

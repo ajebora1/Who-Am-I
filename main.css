@@ -1,3 +1,8 @@
+body {
+    max-width: 500px;
+    margin: auto;
+}
+
 span {
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -147,9 +152,17 @@ div[class*='line'] span:active {
 h1 {
     font-size: 72px;
     font-family: sans-serif;
+    /* color: purple; */
 }
 
 #message {
     font-size: 32px;
     font-family: sans-serif;
+    color: purple;
+}
+
+#messageRestart {
+    font-size: 32px;
+    font-family: sans-serif;
+    color: purple;
 }
