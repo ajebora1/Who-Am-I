@@ -119,6 +119,7 @@ function resetGameBoard() {
 /*----- Delete Characters From Game Board -----*/
 function handleDelete() {
     playerGuessName = playerGuessName.slice(0, playerGuessName.length - 1)
+    currentGuess = playerGuessName.slice(0, playerGuessName.length - 1)
 }
 
 
